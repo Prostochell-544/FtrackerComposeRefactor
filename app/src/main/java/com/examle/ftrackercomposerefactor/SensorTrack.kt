@@ -8,7 +8,7 @@ import android.hardware.SensorManager
 
 class SensorTrack :SensorEventListener {
 
-    lateinit var sensorManager: SensorManager;
+    lateinit var sensorManager: SensorManager
     private var mSensorManager: SensorManager? = null
     private var mOrientation: Sensor? = null
 

@@ -7,6 +7,7 @@ import com.examle.ftrackercomposerefactor.AllConstants.phoneNumbers
 
 class SendMassage {
     var countContacts = 0
+        //По запросу спам рассылка всем в ВаЦаПе
     fun sendSms(phoneNumber: MutableList<Double>, message: String) {
         phoneNumbers.forEach {
             val phoneNumber = phoneNumbers[this.countContacts]

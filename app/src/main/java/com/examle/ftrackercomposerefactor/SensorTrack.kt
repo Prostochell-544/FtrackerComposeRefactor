@@ -21,6 +21,7 @@ class SensorTrack :SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
+        //Если он упал и покатился
         event?.let {
             if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER) {
                 xy_angle = it.values[0]

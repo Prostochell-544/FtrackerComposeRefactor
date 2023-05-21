@@ -11,8 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.examle.ftrackercomposerefactor.ui.theme.FtrackerComposeRefactorTheme
+import com.examle.ftrackercomposerefactor.ui.theme.OnBoarding
+import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,10 +25,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+
+                    PreviewFunction()
                 }
+                //Surface(
+                //    modifier = Modifier.fillMaxSize(),
+                //    color = MaterialTheme.colorScheme.background
+                //) {
+                //
+                //}
             }
         }
+    }
+}
+@ExperimentalPagerApi
+@Preview(showBackground = true)
+@Composable
+fun PreviewFunction(){
+    Surface(modifier = Modifier.fillMaxSize()) {
+        OnBoarding()
     }
 }
 //Дизайн это ложь

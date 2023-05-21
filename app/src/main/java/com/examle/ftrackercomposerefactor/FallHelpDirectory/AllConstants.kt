@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor
+package com.examle.ftrackercomposerefactor.FallHelpDirectory
 
 object AllConstants {
     val messageText = "testtest"

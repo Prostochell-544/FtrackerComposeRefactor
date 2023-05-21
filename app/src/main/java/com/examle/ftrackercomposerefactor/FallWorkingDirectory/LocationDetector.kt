@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor
+package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.Manifest
 import android.content.Context
@@ -7,7 +7,6 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.widget.TextView
 import androidx.core.app.ActivityCompat
 
 class LocationDetector : LocationListener {

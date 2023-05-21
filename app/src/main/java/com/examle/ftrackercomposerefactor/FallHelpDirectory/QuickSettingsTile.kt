@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor
+package com.examle.ftrackercomposerefactor.FallHelpDirectory
 
 import android.service.quicksettings.TileService
 

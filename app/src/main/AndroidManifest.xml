@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".MyQSTileService"
+            android:name=".FallHelpDirectory.MyQSTileService"
             android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             tools:ignore="WrongManifestParent">

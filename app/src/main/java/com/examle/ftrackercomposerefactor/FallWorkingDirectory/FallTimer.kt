@@ -1,10 +1,10 @@
-package com.examle.ftrackercomposerefactor
+package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.os.CountDownTimer
 
-import com.examle.ftrackercomposerefactor.AllConstants.messageText
-import com.examle.ftrackercomposerefactor.AllConstants.phoneNumbers
-import com.examle.ftrackercomposerefactor.AllConstants.timerNums
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.messageText
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumbers
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.timerNums
 
 class FallTimer {
     private lateinit var timer: CountDownTimer

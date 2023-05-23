@@ -15,37 +15,34 @@ import com.examle.ftrackercomposerefactor.ui.theme.OnBoarding
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
+    val isOnboardingPassed = viewModel.isOnboardingPassed.collectAsState()
+//https://habr.com/ru/companies/tinkoff/articles/525010/
+    //https://stackoverflow.com/questions/67768746/chaining-modifier-based-on-certain-conditions-in-android-compose
+    //https://www.answertopia.com/jetpack-compose/a-jetpack-compose-viewmodel-tutorial/
     @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FtrackerComposeRefactorTheme {
                 // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    PreviewFunction()
+
+                    if isOnboardingPassed {
+                        Greeting(name = )
+                    } else {
+                        OnBoarding()
+                    }
                 }
-                //Surface(
-                //    modifier = Modifier.fillMaxSize(),
-                //    color = MaterialTheme.colorScheme.background
-                //) {
-                //
-                //}
             }
         }
     }
 }
-@ExperimentalPagerApi
-@Preview(showBackground = true)
-@Composable
-fun PreviewFunction(){
-    Surface(modifier = Modifier.fillMaxSize()) {
-        OnBoarding()
-    }
-}
+
 //Дизайн это ложь
 @Composable
 fun Greeting(name: String) {

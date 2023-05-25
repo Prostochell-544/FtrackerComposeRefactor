@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor.ui.theme
+package com.examle.ftrackercomposerefactor.ui.elements
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -33,7 +33,7 @@ import kotlinx.coroutines.launch
 @ExperimentalPagerApi
 @Preview
 @Composable
-fun OnBoarding() {
+fun OnBoarding(onOnboardingComplete: (() -> Unit)? = null) {
     val items = OnBoardingItems.getData()
     val scope = rememberCoroutineScope()
     val pageState = rememberPagerState()
@@ -46,9 +46,7 @@ fun OnBoarding() {
                 }
             },
             onSkipClick = {
-                if (pageState.currentPage + 1 < items.size) scope.launch {
-                    pageState.scrollToPage(items.size - 1)
-                }
+                onOnboardingComplete?.invoke()
             }
         )
 
@@ -64,6 +62,8 @@ fun OnBoarding() {
         BottomSection(size = items.size, index = pageState.currentPage) {
             if (pageState.currentPage + 1 < items.size) scope.launch {
                 pageState.scrollToPage(pageState.currentPage + 1)
+            } else {
+                onOnboardingComplete?.invoke()
             }
         }
     }
@@ -104,14 +104,14 @@ fun BottomSection(size: Int, index: Int, onButtonClick: () -> Unit = {}) {
         Indicators(size, index)
 
         // FAB Next
-       /* FloatingActionButton(
-            onClick = onButtonClick,
-           // backgroundColor = MaterialTheme.colorScheme.primary,
-           // contentColor = MaterialTheme.colorScheme.onPrimary,
-            modifier = Modifier.align(Alignment.CenterEnd)
-        ) {
-            Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "Next")
-        }*/
+        /* FloatingActionButton(
+             onClick = onButtonClick,
+            // backgroundColor = MaterialTheme.colorScheme.primary,
+            // contentColor = MaterialTheme.colorScheme.onPrimary,
+             modifier = Modifier.align(Alignment.CenterEnd)
+         ) {
+             Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "Next")
+         }*/
 
         FloatingActionButton(
             onClick = { /* do something */ },
@@ -120,9 +120,11 @@ fun BottomSection(size: Int, index: Int, onButtonClick: () -> Unit = {}) {
                 .align(Alignment.CenterEnd)
                 .clip(RoundedCornerShape(15.dp, 15.dp, 15.dp, 15.dp))
         ) {
-            Icon(Icons.Outlined.KeyboardArrowRight,
+            Icon(
+                Icons.Outlined.KeyboardArrowRight,
                 tint = Color.White,
-                contentDescription = "Localized description")
+                contentDescription = "Localized description"
+            )
         }
     }
 }
@@ -171,14 +173,14 @@ fun OnBoardingItem(items: OnBoardingItems) {
             painter = painterResource(id = items.image),
             contentDescription = "Image1",
             modifier = Modifier.padding(start = 50.dp, end = 50.dp)
-            )
+        )
 
         Spacer(modifier = Modifier.height(25.dp))
 
         Text(
             text = stringResource(id = items.title),
             style = MaterialTheme.typography.headlineMedium,
-           // fontSize = 24.sp,
+            // fontSize = 24.sp,
             color = MaterialTheme.colorScheme.onBackground,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,

@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor.ui.theme
+package com.examle.ftrackercomposerefactor.ui.elements
 
 import com.examle.ftrackercomposerefactor.R
 

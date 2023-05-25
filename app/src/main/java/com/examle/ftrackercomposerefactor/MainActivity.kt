@@ -15,7 +15,7 @@ import com.examle.ftrackercomposerefactor.ui.theme.OnBoarding
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
-    val isOnboardingPassed = viewModel.isOnboardingPassed.collectAsState()
+    //val isOnboardingPassed = viewModel.isOnboardingPassed.collectAsState()
 //https://habr.com/ru/companies/tinkoff/articles/525010/
     //https://stackoverflow.com/questions/67768746/chaining-modifier-based-on-certain-conditions-in-android-compose
     //https://www.answertopia.com/jetpack-compose/a-jetpack-compose-viewmodel-tutorial/
@@ -32,16 +32,16 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-                    if isOnboardingPassed {
-                        Greeting(name = )
-                    } else {
+                    //if isOnboardingPassed {
+                //    Greeting(name = )
+                   // } else {
                         OnBoarding()
                     }
                 }
             }
         }
     }
-}
+//}
 
 //Дизайн это ложь
 @Composable

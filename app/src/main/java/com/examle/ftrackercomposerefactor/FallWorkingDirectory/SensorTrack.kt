@@ -12,12 +12,12 @@ import com.examle.ftrackercomposerefactor.FallHelpDirectory.Buffers
 import kotlin.math.sqrt
 
 class SensorTrack private constructor() : SensorEventListener {
-    var context: FallDellper? = null
+    var context: TrackDelper? = null
 
     companion object {
         internal var singleton: SensorTrack = SensorTrack()
 
-        internal fun instance(context: FallDellper): SensorTrack {
+        internal fun instance(context: TrackDelper): SensorTrack {
             if (singleton.context != context) {
                 singleton.initiateSensor(context)
             }
@@ -235,7 +235,7 @@ class SensorTrack private constructor() : SensorEventListener {
                 lying[at] = 1.0
                 val context = this.context
                 if (context != null) {
-                    FallDellper.say(context, android.util.Log.WARN, TAG, "Detected a fall")
+                    TrackDelper.say(context, android.util.Log.WARN, TAG, "Detected a fall")
                     alert(context)
                 }
             }
@@ -285,8 +285,8 @@ class SensorTrack private constructor() : SensorEventListener {
         }
     }
 
-    private fun initiateSensor(context: FallDellper) {
-        //this.context = context
+    private fun initiateSensor(context: TrackDelper) {
+        this.context = context
         val manager: SensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
         val sensor: Sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         val vendor: String = sensor.vendor
@@ -298,7 +298,7 @@ class SensorTrack private constructor() : SensorEventListener {
     }
 
     private fun alert(context: Context) {
-        FallOR.alert(context)
+        FallSiren.alert(context)
     }
 }
 //import android.hardware.Sensor

@@ -19,7 +19,7 @@ import java.util.Date
 import java.util.Locale
 
 
-class LocationDetector private constructor(private val context: FallDellper) : LocationListener{
+class LocationDetector private constructor(private val context: TrackDelper) : LocationListener{
     private var gps: Location? = null
     private var network: Location? = null
     private var once: Long = 0
@@ -118,7 +118,6 @@ class LocationDetector private constructor(private val context: FallDellper) : L
             }
         }
     }
-
     override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
         enforce(context)
     }
@@ -137,13 +136,13 @@ class LocationDetector private constructor(private val context: FallDellper) : L
 
         internal var singleton: LocationDetector? = null
 
-        fun initiate(fallDellper: FallDellper) {
+        fun initiate(trackDelper: TrackDelper) {
             if (null == singleton) {
-                singleton = LocationDetector(fallDellper)
+                singleton = LocationDetector(trackDelper)
             }
         }
 
-        private fun enforce(context: FallDellper) {
+        private fun enforce(context: TrackDelper) {
             enforceWiFi(context)
             enforceGPS(context)
         }

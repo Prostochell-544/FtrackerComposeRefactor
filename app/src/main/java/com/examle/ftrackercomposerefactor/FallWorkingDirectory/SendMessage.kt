@@ -3,7 +3,6 @@
 package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.telephony.SmsManager
-//import androidx.compose.ui.tooling.data.EmptyGroup.location
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumbers
 
 class SendMassage {

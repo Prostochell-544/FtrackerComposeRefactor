@@ -2,7 +2,7 @@ package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.os.CountDownTimer
 
-import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.messageText
+
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumbers
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.timerNums
 
@@ -17,7 +17,6 @@ class FallTimer {
 
             override fun onFinish() {
                 // Код, который будет выполняться по завершению таймера
-                SendMassage().sendSms(phoneNumbers,messageText)
             }
         }.start()
     }

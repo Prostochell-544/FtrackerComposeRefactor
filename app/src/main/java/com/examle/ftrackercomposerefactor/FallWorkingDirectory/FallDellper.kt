@@ -12,11 +12,11 @@ import androidx.core.app.NotificationCompat
 import com.examle.ftrackercomposerefactor.R
 import kotlinx.coroutines.Dispatchers.Main
 
-class Guardian : Service() {
+class FallDellper : Service() {
     override fun onCreate() {
         LocationDetector.initiate(this)
         SensorTrack.instance(this)
-        Alarm.instance(this)
+        FallOR.instance(this)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -63,7 +63,7 @@ class Guardian : Service() {
 
     companion object {
         internal fun initiate(context: Context) {
-            val intent = Intent(context, Guardian::class.java)
+            val intent = Intent(context, FallDellper::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 context.startForegroundService(intent)
             } else {
@@ -71,7 +71,7 @@ class Guardian : Service() {
             }
         }
 
-        internal fun say(context: Guardian?, level: Int, tag: String, message: String) {
+        internal fun say(context: FallDellper?, level: Int, tag: String, message: String) {
             Log.println(level, tag, message)
             //Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }

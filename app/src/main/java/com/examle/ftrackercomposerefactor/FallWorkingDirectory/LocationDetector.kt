@@ -19,7 +19,7 @@ import java.util.Date
 import java.util.Locale
 
 
-class LocationDetector private constructor(private val context: Guardian) : LocationListener{
+class LocationDetector private constructor(private val context: FallDellper) : LocationListener{
     private var gps: Location? = null
     private var network: Location? = null
     private var once: Long = 0
@@ -137,13 +137,13 @@ class LocationDetector private constructor(private val context: Guardian) : Loca
 
         internal var singleton: LocationDetector? = null
 
-        fun initiate(guardian: Guardian) {
+        fun initiate(fallDellper: FallDellper) {
             if (null == singleton) {
-                singleton = LocationDetector(guardian)
+                singleton = LocationDetector(fallDellper)
             }
         }
 
-        private fun enforce(context: Guardian) {
+        private fun enforce(context: FallDellper) {
             enforceWiFi(context)
             enforceGPS(context)
         }

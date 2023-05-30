@@ -7,7 +7,7 @@ import android.media.SoundPool
 import android.os.Build
 import com.examle.ftrackercomposerefactor.R
 
-class Alarm private constructor(val context: Guardian) {
+class FallOR private constructor(val context: FallDellper) {
     private var pool: SoundPool
     private var id: Int
 
@@ -29,12 +29,12 @@ class Alarm private constructor(val context: Guardian) {
     }
 
     companion object {
-        private var singleton: Alarm? = null
+        private var singleton: FallOR? = null
 
-        internal fun instance(context: Guardian): Alarm {
+        internal fun instance(context: FallDellper): FallOR {
             var singleton = this.singleton
             if (singleton == null) {
-                singleton = Alarm(context)
+                singleton = FallOR(context)
                 this.singleton = singleton
             }
             return singleton
@@ -59,6 +59,6 @@ class Alarm private constructor(val context: Guardian) {
 
         }
 
-        private val TAG: String = Alarm::class.java.simpleName
+        private val TAG: String = FallOR::class.java.simpleName
     }
 }

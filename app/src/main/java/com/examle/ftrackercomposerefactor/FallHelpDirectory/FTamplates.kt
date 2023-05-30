@@ -1,4 +1,4 @@
-package com.examle.ftrackercomposerefactor.FallWorkingDirectory
+package com.examle.ftrackercomposerefactor.FallHelpDirectory
 
 class Buffers(count: Int, size: Int, var position: Int, value: Double) {
     val buffers: Array<DoubleArray> = Array(count) { DoubleArray(size) { value } }

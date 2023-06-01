@@ -94,7 +94,7 @@ fun TopSection(onBackClick: () -> Unit = {}, onSkipClick: () -> Unit = {}) {
 }
 
 @Composable
-fun BottomSection(size: Int, index: Int, onButtonClick: () -> Unit = {}) {
+fun BottomSection(size: Int, index: Int, onNextClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -104,17 +104,17 @@ fun BottomSection(size: Int, index: Int, onButtonClick: () -> Unit = {}) {
         Indicators(size, index)
 
         // FAB Next
-        /* FloatingActionButton(
-             onClick = onButtonClick,
-            // backgroundColor = MaterialTheme.colorScheme.primary,
-            // contentColor = MaterialTheme.colorScheme.onPrimary,
-             modifier = Modifier.align(Alignment.CenterEnd)
-         ) {
-             Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "Next")
-         }*/
+        //FloatingActionButton(
+        //     onClick = onButtonClick,
+        //    // backgroundColor = MaterialTheme.colorScheme.primary,
+        //    // contentColor = MaterialTheme.colorScheme.onPrimary,
+        //     modifier = Modifier.align(Alignment.CenterEnd)
+        // ) {
+        //     Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "Next")
+        // }
 
         FloatingActionButton(
-            onClick = { /* do something */ },
+            onClick = onNextClick,
             containerColor = Color.Black,
             modifier = Modifier
                 .align(Alignment.CenterEnd)

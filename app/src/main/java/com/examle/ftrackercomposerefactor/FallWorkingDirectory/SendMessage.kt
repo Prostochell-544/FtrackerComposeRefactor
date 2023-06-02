@@ -15,7 +15,7 @@ class SendMassage {
             phoneNumbers.forEach {
                 val phoneNumber = phoneNumbers[this.countContacts]
                 val smsManager = SmsManager.getDefault()
-                smsManager.sendTextMessage(phoneNumber.toString(), null, message+"Моя геолокация:", null, null)
+                smsManager.sendTextMessage(phoneNumber.toString(), null, message, null, null)
                 countContacts = countContacts+1
             }
         }
@@ -26,7 +26,7 @@ class SendMassage {
             phoneNumbers.forEach {
                 val phoneNumber = phoneNumbers[this.countContacts]
                 val smsManager = SmsManager.getDefault()
-                smsManager.sendTextMessage(phoneNumber.toString(), null, message+"Моя геолокация:", null, null)
+                smsManager.sendTextMessage(phoneNumber.toString(), null, message, null, null)
                 countContacts = countContacts+1
             }
         }

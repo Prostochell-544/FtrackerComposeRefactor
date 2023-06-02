@@ -12,24 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.examle.ftrackercomposerefactor.FallWorkingDirectory.SensorTrack
+import com.examle.ftrackercomposerefactor.FallWorkingDirectory.TrackDelper
 import com.examle.ftrackercomposerefactor.ui.theme.FtrackerComposeRefactorTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity : ComponentActivity() {
     val mainViewModel by viewModels<MainViewModel>()
-
-    //https://habr.com/ru/companies/tinkoff/articles/525010/
-    //https://stackoverflow.com/questions/67768746/chaining-modifier-based-on-certain-conditions-in-android-compose
-    //https://www.answertopia.com/jetpack-compose/a-jetpack-compose-viewmodel-tutorial/
     @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        TrackDelper.initiate(this)
+        //SensorTrack.instance(this)
         setContent {
             val isOnboardingPassed = mainViewModel.isOnboardingPassed.collectAsState(null)
 
             FtrackerComposeRefactorTheme {
-                // A surface container using the 'background' color from the theme
-
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -48,9 +46,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-//}
 
-//Дизайн это ложь
 @Composable
 fun Greeting(name: String) {
     Text(text = "Hello $name!")

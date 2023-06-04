@@ -10,7 +10,6 @@ import com.examle.ftrackercomposerefactor.ui.elements.MainPage
 
 public class FallTimer(private var timer: CountDownTimer, private val context: Context) {
     val mainPage = MainPage()
-    val sendMessage = SendMessage()
     public fun startTimer(message: String) {
         timer = object : CountDownTimer(timerNums.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -18,7 +17,7 @@ public class FallTimer(private var timer: CountDownTimer, private val context: C
             }
 
             override fun onFinish() {
-                sendMessage.sendSms(phoneNumber, message)
+                SendMassage.sendSms(phoneNumber, message)
             }
         }.start()
     }

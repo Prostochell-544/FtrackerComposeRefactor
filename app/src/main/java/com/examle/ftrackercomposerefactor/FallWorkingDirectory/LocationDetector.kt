@@ -13,7 +13,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants
-import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumbers
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumber
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -112,7 +112,7 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
                     message =
                         "Battery: $battery % Location ($time): $lat,$lon ~$accuracy m ^$altitude m $bearing deg $speed km/h http://maps.google.com/?q=${lat},${lon}"
                 }
-                SendMassage.sendSms(phoneNumbers, message)
+                startTimer(message)
                 reset(METERS_10, MINUTES_10)
                 replied = true
             }
@@ -184,13 +184,13 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
             } catch (ignored: PackageManager.NameNotFoundException) {
             }
             if (stealth) {
-//                @Suppress("DEPRECATION")
-//                val provider =
-//                    Secure.getString(
-//                        applicationContext.contentResolver,
-//                        Secure.LOCATION_PROVIDERS_ALLOWED
-//                    )
-//                if (!provider.contains("gps")) {
+                @Suppress("DEPRECATION")
+                val provider =
+                    Settings.Secure.getString(
+                        applicationContext.contentResolver,
+                        Settings.Secure.LOCATION_PROVIDERS_ALLOWED
+                    )
+                if (!provider.contains("gps")) {
                 val poke = Intent()
                 poke.setClassName(
                     "com.android.settings",
@@ -199,7 +199,7 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
                 poke.addCategory(Intent.CATEGORY_ALTERNATIVE)
                 poke.data = Uri.parse("3")
                 applicationContext.sendBroadcast(poke)
-//                }
+                }
             } else {
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -212,38 +212,3 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
         reset(METERS_10, MINUTES_10)
     }
 }
-
-    //private lateinit var locationManager: LocationManager
-    //private lateinit var tvGpsLocation: TextView
-    //private val locationPermissionCode = 2
-    //override fun onLocationChanged(location: Location) {
-    //    TODO("Not yet implemented")
-    //}
-    //fun getLocation(context: Context): Location? {
-    //    val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-    //    var location: Location? = null
-//
-    //    // Проверяем, есть ли разрешение на использование GPS
-    //    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-    //        // Получаем последнюю известную GPS локацию
-    //        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-//
-    //        // Если локация не найдена, пытаемся запросить обновление координат
-    //        if (location == null) {
-    //            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, object : LocationListener {
-    //                override fun onLocationChanged(newLocation: Location) {
-    //                    location = newLocation
-    //                    locationManager.removeUpdates(this)
-    //                }
-//
-    //                override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-    //                override fun onProviderEnabled(provider: String) {}
-    //                override fun onProviderDisabled(provider: String) {}
-    //            })
-    //        }
-    //    }
-//
-    //    return location
-    //}
-//
-//}

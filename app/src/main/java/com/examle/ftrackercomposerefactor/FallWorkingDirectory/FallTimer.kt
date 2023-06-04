@@ -1,27 +1,27 @@
 package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.os.CountDownTimer
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants
 
-
-import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumbers
+import android.content.Context
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.timerNums
+import com.examle.ftrackercomposerefactor.FallWorkingDirectory.FallSiren.Companion.siren
 
-class FallTimer {
+
     private lateinit var timer: CountDownTimer
 
-    fun startTimer() {
+    public fun startTimer(message: String) {
         timer = object : CountDownTimer( timerNums.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // Код, который будет выполняться каждую секунду
+                //siren(Context)
             }
 
             override fun onFinish() {
-                // Код, который будет выполняться по завершению таймера
+                SendMassage.sendSms(AllConstants.phoneNumber, message)
             }
         }.start()
     }
 
-    fun stopTimer() {
+    public fun stopTimer() {
         timer.cancel()
     }
-}

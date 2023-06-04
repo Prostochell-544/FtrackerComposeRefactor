@@ -42,8 +42,6 @@ class TrackDelper : Service() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 createNotificationChannel()
             } else {
-                // If earlier version channel ID is not used
-                // https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#NotificationCompat.Builder(android.content.Context)
                 ""
             }
         val main = Intent(this, Main::class.java)
@@ -70,6 +68,11 @@ class TrackDelper : Service() {
             } else {
                 context.startService(intent)
             }
+        }
+
+        internal fun stop(context: Context) {
+            val intent = Intent(context, TrackDelper::class.java)
+            context.stopService(intent)
         }
 
         internal fun say(context: TrackDelper?, level: Int, tag: String, message: String) {

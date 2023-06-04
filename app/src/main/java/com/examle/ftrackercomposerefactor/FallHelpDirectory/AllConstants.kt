@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 
 object AllConstants {
-    val phoneNumbers = mutableListOf(1.2, 4.5, 3.2, 1.8)
+    var phoneNumber = ""
     val timerNums = 15000
-//https://developer.android.com/courses/android-basics-kotlin/course
+
 internal fun level(context: Context): Int {
     val applicationContext: Context = context.applicationContext
     val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)

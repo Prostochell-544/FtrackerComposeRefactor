@@ -28,13 +28,33 @@ class DataStoreConst(context: Context) {
             it[isOnboardingPassed]
         }
 
+    val isMessagingEnabledFlow: Flow<Boolean?> = dataStore.data
+        .catch {
+            if (it is IOException) {
+                it.printStackTrace()
+                emit(emptyPreferences())
+            } else {
+                throw it
+            }
+        }
+        .map {
+            it[isMessagingEnabled]
+        }
+
     companion object {
         val isOnboardingPassed = preferencesKey<Boolean>("is_it_ps")
+        val isMessagingEnabled = preferencesKey<Boolean>("is_messaging_enabled")
     }
 
     suspend fun updateOnboardingPassedStatus(status: Boolean) {
         dataStore.edit {
             it[isOnboardingPassed] = status
+        }
+    }
+
+    suspend fun updateMessagingEnabledStatus(status: Boolean) {
+        dataStore.edit {
+            it[isMessagingEnabled] = status
         }
     }
 }

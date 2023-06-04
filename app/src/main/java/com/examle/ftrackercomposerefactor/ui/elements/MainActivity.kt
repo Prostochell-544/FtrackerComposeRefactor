@@ -8,19 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,15 +19,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.examle.ftrackercomposerefactor.FallWorkingDirectory.SensorTrack
-import com.examle.ftrackercomposerefactor.FallWorkingDirectory.TrackDelper
 import com.examle.ftrackercomposerefactor.ui.theme.FtrackerComposeRefactorTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 class MainActivity() : ComponentActivity(), Parcelable {
     val mainViewModel by viewModels<MainViewModel>()
+    val mainPage = MainPage()
 
     constructor(parcel: Parcel) : this() {
     }
@@ -57,23 +45,20 @@ class MainActivity() : ComponentActivity(), Parcelable {
                 ) {
                     Column(
                         modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(148.dp),
+                        verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         isOnboardingPassed.value?.let {
                             if (it) {
                                 isMessagingEnabled.value?.let { isMessagingEnabled ->
-                                    SwitchWithLabel(
+                                    mainPage.SwitchWithLabel(
                                         label = "Test",
                                         state = isMessagingEnabled,
                                         onStateChange = { newState ->
                                             mainViewModel.updateMessagingEnabledStatus(newState)
                                         }
                                     )
-                                    EditText()
-                                    AcceptButton(text = "Assert", onClick = { text ->
-                                        println(text)
-                                    })
+                                    mainPage.PhoneNumberInput()
                                 }
                             } else {
                                 OnBoarding {
@@ -104,23 +89,5 @@ class MainActivity() : ComponentActivity(), Parcelable {
         override fun newArray(size: Int): Array<MainActivity?> {
             return arrayOfNulls(size)
         }
-    }
-}
-
-@Composable
-private fun MyUI() {
-
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    FtrackerComposeRefactorTheme {
-        Greeting("Android")
     }
 }

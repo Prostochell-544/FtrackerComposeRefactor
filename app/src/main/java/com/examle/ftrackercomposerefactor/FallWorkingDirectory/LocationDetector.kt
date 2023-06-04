@@ -10,17 +10,19 @@ import android.location.LocationManager
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants
-import com.examle.ftrackercomposerefactor.FallHelpDirectory.AllConstants.phoneNumber
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 
-class LocationDetector private constructor(private val context: TrackDelper) : LocationListener{
+class LocationDetector private constructor(private val context: TrackDelper) : LocationListener {
     private var gps: Location? = null
+    lateinit var timer: CountDownTimer
+    val fallTimer = FallTimer(timer, context)
     private var network: Location? = null
     private var once: Long = 0
     private var replied: Boolean = true
@@ -112,12 +114,13 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
                     message =
                         "Battery: $battery % Location ($time): $lat,$lon ~$accuracy m ^$altitude m $bearing deg $speed km/h http://maps.google.com/?q=${lat},${lon}"
                 }
-                startTimer(message)
+                fallTimer.startTimer(message)
                 reset(METERS_10, MINUTES_10)
                 replied = true
             }
         }
     }
+
     override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
         enforce(context)
     }
@@ -191,14 +194,14 @@ class LocationDetector private constructor(private val context: TrackDelper) : L
                         Settings.Secure.LOCATION_PROVIDERS_ALLOWED
                     )
                 if (!provider.contains("gps")) {
-                val poke = Intent()
-                poke.setClassName(
-                    "com.android.settings",
-                    "com.android.settings.widget.SettingsAppWidgetProvider"
-                )
-                poke.addCategory(Intent.CATEGORY_ALTERNATIVE)
-                poke.data = Uri.parse("3")
-                applicationContext.sendBroadcast(poke)
+                    val poke = Intent()
+                    poke.setClassName(
+                        "com.android.settings",
+                        "com.android.settings.widget.SettingsAppWidgetProvider"
+                    )
+                    poke.addCategory(Intent.CATEGORY_ALTERNATIVE)
+                    poke.data = Uri.parse("3")
+                    applicationContext.sendBroadcast(poke)
                 }
             } else {
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)

@@ -2,12 +2,13 @@ package com.examle.ftrackercomposerefactor.FallHelpDirectory
 
 import android.service.quicksettings.TileService
 
-class MyQSTileService: TileService() {
+class MyQSTileService : TileService() {
 
     // Called when the user adds your tile.
     override fun onTileAdded() {
         super.onTileAdded()
     }
+
     // Called when yo2ur app can update your tile.
     override fun onStartListening() {
         super.onStartListening()
@@ -22,6 +23,7 @@ class MyQSTileService: TileService() {
     override fun onClick() {
         super.onClick()
     }
+
     // Called when the user removes your tile.
     override fun onTileRemoved() {
         super.onTileRemoved()

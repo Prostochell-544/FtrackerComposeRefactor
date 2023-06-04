@@ -13,7 +13,7 @@ class Buffers(count: Int, size: Int, var position: Int, value: Double) {
             }
         }
         for (i: Int in this.buffers.indices) {
-                this.buffers[i].copyInto(buffers.buffers[i])
+            this.buffers[i].copyInto(buffers.buffers[i])
         }
         buffers.position = position
     }

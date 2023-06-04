@@ -6,9 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.examle.ftrackercomposerefactor.FallHelpDirectory.DataStoreConst
 import com.examle.ftrackercomposerefactor.FallWorkingDirectory.TrackDelper
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

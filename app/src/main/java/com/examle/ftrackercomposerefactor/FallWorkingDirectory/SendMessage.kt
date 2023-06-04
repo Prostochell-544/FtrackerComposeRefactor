@@ -4,7 +4,7 @@ package com.examle.ftrackercomposerefactor.FallWorkingDirectory
 
 import android.telephony.SmsManager
 
-class SendMassage {
+class SendMessage {
 
     //По запросу спам рассылка всем в ВаЦаПе (нет пока в смс)
 

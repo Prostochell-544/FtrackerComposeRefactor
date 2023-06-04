@@ -2,6 +2,7 @@
 
 package com.examle.ftrackercomposerefactor.ui.elements
 
+import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,13 +21,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.examle.ftrackercomposerefactor.FallHelpDirectory.CheckPermissions
 
 class MainPage {
     var phoneNumberSetter: String? = null
-
+    val checkPermissions = CheckPermissions(MainActivity(),
+        arrayListOf(
+            Manifest.permission.CAMERA),
+        23)
     @Composable
     public fun SwitchWithLabel(label: String, state: Boolean, onStateChange: (Boolean) -> Unit) {
-
+       // checkPermissions.checkPermissions()
         val checkedState = remember { mutableStateOf(value = false) }
 
         Row(

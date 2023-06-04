@@ -26,14 +26,17 @@ class MainActivity() : ComponentActivity(), Parcelable {
     val mainViewModel by viewModels<MainViewModel>()
     val mainPage = MainPage()
 
+
     constructor(parcel: Parcel) : this() {
     }
 
     @OptIn(ExperimentalPagerApi::class, ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         //SensorTrack.instance(this)
         setContent {
+
             val isOnboardingPassed = mainViewModel.isOnboardingPassed.collectAsState(null)
             val isMessagingEnabled =
                 mainViewModel.isMessagingEnabled.collectAsState(initial = false)

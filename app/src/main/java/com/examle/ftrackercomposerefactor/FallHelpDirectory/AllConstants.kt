@@ -11,17 +11,17 @@ val mainPage = MainPage()
 object AllConstants {
     var phoneNumber = mainPage.phoneNumberSetter
     val timerNums = 15000
-    //android.permission.ACCESS_COARSE_LOCATION
-    //android.permission.ACCESS_FINE_LOCATION
-    //android.permission.MODIFY_AUDIO_SETTINGS
-    //android.permission.READ_CONTACTS
-    //android.permission.READ_PHONE_STATE
-    //android.permission.RECEIVE_BOOT_COMPLETED
-    //android.permission.RECEIVE_SMS
-    //android.permission.SEND_SMS
-    //android.permission.FOREGROUND_SERVICE
-    //android.permission.BODY_SENSORS
-    //android.permission.WAKE_LOCK
+    //Manifest.permission.ACCESS_COARSE_LOCATION
+    //Manifest.permission.ACCESS_FINE_LOCATION
+    //Manifest.permission.MODIFY_AUDIO_SETTINGS
+    //Manifest.permission.READ_CONTACTS
+    //Manifest.permission.READ_PHONE_STATE
+    //Manifest.permission.RECEIVE_BOOT_COMPLETED
+    //Manifest.permission.RECEIVE_SMS
+    //Manifest.permission.SEND_SMS
+    //Manifest.permission.FOREGROUND_SERVICE
+    //Manifest.permission.BODY_SENSORS
+    //Manifest.permission.WAKE_LOCK
 
     //COARSE_PERMISSION_CODE
     //FINE_PERMISSION_CODE

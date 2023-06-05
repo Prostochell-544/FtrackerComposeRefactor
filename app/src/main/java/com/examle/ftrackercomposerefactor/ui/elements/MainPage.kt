@@ -50,7 +50,7 @@ class MainPage {
             OutlinedTextField(
                 value = phoneNumber,
                 onValueChange = { phoneNumber = it },
-                label = { Text("Phone number") },
+                label = { Text("Введите телефон") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
             )
 
@@ -58,7 +58,7 @@ class MainPage {
                 phoneNumberSetter = phoneNumber
                 println("Phone number is $phoneNumber")
             }) {
-                Text("Apply")
+                Text("Приянть")
 
 
             }

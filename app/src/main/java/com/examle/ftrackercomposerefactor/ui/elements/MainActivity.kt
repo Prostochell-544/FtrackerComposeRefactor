@@ -82,10 +82,9 @@ class MainActivity() : ComponentActivity(), Parcelable {
                                 checkPermission(Manifest.permission.SEND_SMS,SEND_PERMISSION_CODE)
                                 checkPermission(Manifest.permission.FOREGROUND_SERVICE,FOREGROUND_PERMISSION_CODE)
                                 checkPermission(Manifest.permission.BODY_SENSORS,SENSORS_PERMISSION_CODE)
-
                                 isMessagingEnabled.value?.let { isMessagingEnabled ->
                                     mainPage.SwitchWithLabel(
-                                        label = "Test",
+                                        label = "Запуск работы датчиков",
                                         state = isMessagingEnabled,
                                         onStateChange = { newState ->
                                             mainViewModel.updateMessagingEnabledStatus(newState)

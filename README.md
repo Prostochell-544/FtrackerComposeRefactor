@@ -7,6 +7,6 @@
 
 ## Принцип работы
 
-![Принцип работы]((https://github.com/Prostochell-544/Materials/blob/main/alg.jpg))
+![Принцип работы]([https://github.com/Prostochell-544/Materials/blob/main/alg.jpg])
 
 
